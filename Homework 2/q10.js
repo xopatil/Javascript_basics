@@ -6,7 +6,6 @@ function inventoryManagement(productquantity){
         } catch (error) {
             console.log(error.name+":"+error.message);
         }
-    
 }
 }
 inventoryManagement(3);
