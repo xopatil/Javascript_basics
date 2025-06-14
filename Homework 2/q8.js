@@ -1,18 +1,14 @@
-class InvalidateCouponcode extends Error{
-constructor(message){
-  super(message)
-  this.name="InvalidateCouponcode"
-}
-}
-function validateCouponCode(couponCode){
-  if (couponCode.length > 5){
+
+function UpdateCustomerProfile(CustomerData){
+  if (CustomerData == null || CutomerData == undefined){
     try {
-            throw new InvalidateCouponcode("Invalid coupon code, please enter a valid coupon code")
+            throw new Error("Please provide the correct customer data")
+
         } catch (error) {
             console.log(error.name+":"+error.message);
         }
-    finally{    console.log("validation completge");}
+    finally{    console.log("Process not completed , data is not updated ,please enter the valid data ");}
     
   }
 }
-validateCouponCode("1234567");
+UpdateCustomerProfile(null);                      
