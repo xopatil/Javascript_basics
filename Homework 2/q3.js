@@ -13,3 +13,13 @@ payment(true).then((result)=>{
 }).catch((err)=>{
   console.log(err);
 })
+
+async function test(){
+  try {
+    const result = await payment(false)
+    console.log(result);
+  }catch(error){
+    console.log(error);
+  }
+}
+test()
