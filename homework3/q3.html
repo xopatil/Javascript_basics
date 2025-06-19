@@ -6,14 +6,16 @@
   <title>Document</title>
 </head>
 <body>
+   <h1>Products</h1>
   <ul id ="ul">
-    <h1>Products</h1>
+   
     <li>laptop</li>
     <li>phone</li>
   </ul>
   <p>append</p>
   <input type="text" id ="test">
   <button id="btn">Submit</button>
+  <button id="btn1">resetCart</button>
   <script>
     const btn = document.getElementById("btn")
     btn.addEventListener("click" , ()=>{
@@ -22,9 +24,17 @@
       const ul = document.getElementById("ul");
       li.innerText=test.value
       ul.append(li)
-      localStorage.setItem("li", test.value);
+      localStorage.setItem("li", ul.children.length);
+      
       
     })
+    const btn1 = document.getElementById("btn1")
+    btn1.addEventListener("click" , ()=>{
+      const test = document.getElementById("test");
+      const ul = document.getElementById("ul");
+      localStorage.removeItem("li", ul.children.length);
+    })
+
   </script> 
 </body>
 </html>
