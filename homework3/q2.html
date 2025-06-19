@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>List</h1>
+  <ul id ="ul">
+    <li>1</li>
+    <li>2</li>
+  </ul>
+  <p>no of elements in the list</p>
+  <button id="btn">Submit</button>
+  <script>
+    
+    const btn = document.getElementById("btn")
+    btn.addEventListener("click" , ()=>{
+      const ul = document.getElementById("ul");
+      alert("Number of elements in the list: " + ul.children.length); 
+    })
+  </script>
+
+</body>
+</html>
+<!-- elements of the list are known as children and the number of elements can be found using the children property of the parent element. -->
