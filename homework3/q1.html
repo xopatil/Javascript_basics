@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id ="ul">
+    <h1>Products</h1>
+    <li>laptop</li>
+    <li>phone</li>
+  </ul>
+  <p>append</p>
+  <input type="text" id ="test">
+  <button id="btn">Submit</button>
+  <script>
+    const btn = document.getElementById("btn")
+    btn.addEventListener("click" , ()=>{
+      const test = document.getElementById("test");
+      const li = document.createElement("li");
+      const ul = document.getElementById("ul");
+      li.innerText=test.value
+      ul.append(li)
+      localStorage.setItem("li", test.value);
+    })
+  </script> 
+</body>
+</html>
