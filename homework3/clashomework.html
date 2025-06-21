@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Class homework</h1>
+  <ol>
+    <li>Mouse interaction 
+    <ul>
+      <li>double click</li>
+      <li>hover</li>
+    </ul> 
+    </li>
+    <li>Keyboard keypress display alert</li>
+    <li>GetelementbyClassname</li>
+  </ol>
+  <h2>Homework begins</h2>
+  <button type="submit" class="btn">Submit</button>
+  <button type="reset" class="btn">Reset</button>
+  <input type="text" class="input" placeholder="type for keypress detection">
+  <script>
+    const btn = document.getElementsByClassName("btn")
+    const input = document.getElementsByClassName("input")
+
+    btn[0].addEventListener("dblclick" , ()=>{
+      alert("submit button has been double clicked ")
+    })
+    btn[1].addEventListener("dbclick" , ()=>{
+      alert("button has been clicked ")
+    })
+    btn[1].addEventListener("mouseover" , ()=>{
+      alert("hover on reset button ")
+    })
+    input[0].addEventListener("keypress",()=>{
+      alert("keypress has been detected in input field ")
+    })
+  </script>
+</body>
+</html>
