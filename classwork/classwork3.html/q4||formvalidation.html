@@ -1,0 +1,100 @@
+<!-- form 
+\d for digits in regex
+\s for space in regex -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  Name:
+  <input type="text" name ="" id="name"><br><br>
+  Email:
+  <input type="email" name="" id="email"><br><br>
+  <div class="mb-3">
+    <label for="" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      name=""
+      id="password"
+      placeholder=""
+    />
+  </div><br>
+  Query:
+  <input type="text" name="" id ="query"> <br><br>
+  
+  <button id = "button">Submit</button>
+
+  <script>
+    const btn = document.getElementById("button");
+    btn.addEventListener("click", () => {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const query = document.getElementById("query").value.trim();
+      
+      // Improved regex patterns
+      const passwordReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$%#])[A-Za-z\d$%#]{8,}$/;
+      const nameReg = /^[A-Za-z\s]+$/;
+      // More flexible email regex
+      const emailreg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      
+      let isValid = true;
+      
+      // Validate name
+      if (!name || !nameReg.test(name)) {
+        alert("Enter valid name");
+        isValid = false;
+        return;
+      }
+      
+      // Validate email
+      if (!email || !emailreg.test(email)) {
+        alert("Enter valid email format");
+        isValid = false;
+        return;
+      }
+      
+      // Validate password
+      if (!password || !passwordReg.test(password)) {
+        alert("Password must be at least 8 characters long and contain at least one letter, one number, and one special character ($, %, #)");
+        isValid = false;
+        return;
+      }
+      
+      // Validate query
+      if (!query || query.length < 10 || query.length > 1000) {
+        alert("Please enter a query between 10 and 1000 characters");
+        isValid = false;
+        return;
+      }
+      
+      // If all validations pass, save to localStorage
+      if (isValid) {
+        const user = {
+          name: name,
+          email: email,
+          password: password,
+          query: query,
+          timestamp: new Date().toISOString()
+        };
+        
+        const existingdata = JSON.parse(localStorage.getItem("data")) || [];
+        existingdata.push(user);
+        localStorage.setItem("data", JSON.stringify(existingdata));
+        
+        alert("Form submitted successfully!");
+        
+        // Clear the form
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("query").value = "";
+      }
+    });
+  </script>
+</body>
+</html>
