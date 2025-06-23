@@ -1,0 +1,67 @@
+<!-- form 
+\d for digits in regex
+\s for space in regex -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  Name:
+  <input type="text" name ="" id="name"><br>
+  Email:
+  <input type="email" name="" id="email"><br>
+  <div class="mb-3">
+    <label for="" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      name=""
+      id="password"
+      placeholder=""
+    />
+  </div>
+  Query:
+  <input type="text" id ="query"> <br>
+  
+  <button id = "button">Submit</button>
+
+
+  <script>
+    const btn = document.getElementById("button");
+    btn.addEventListener("click",()=>{
+      const name = document.getElementById("name").value
+
+      const email = document.getElementById("email").value
+      const password = document.getElementById("password").value
+      const query = dcoument.getElementById("query").value
+      const passwordReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$%#])[A-Za-z\d$%#]{8,}$/
+ // At least 8 characters, at least one letter and one number and one specoial character 
+      const nameReg = /^[A-Za-z\s]+$/ 
+      // "+$ is becuase multiple occurences are allowed"
+      const emailreg = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/
+      if(!nameReg.test(name)){
+        alert("Enter valid nane")
+      }
+      if(!emailreg.test(email)){
+        alert("enter valid email format ")
+      }
+      if(!passwordReg.test(password)){
+        alert("Password must be at least 8 characters long and contain at least one letter and one number")
+      }
+      if(query.length<10|| query.length>1000){
+        alert("please enter a query between 10 and 1000 characters")
+      }
+     const user = [name ,email,password]
+     const existingdata = JSON.parse(localStorage.getItem("data"))||[]
+     existingdata.push(user)
+     localStorage.setItem("data",JSON.stringify(existingdata))
+
+    })
+  </script>
+
+</body>
+
+</html>
