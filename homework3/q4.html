@@ -1,0 +1,82 @@
+<!-- form 
+\d for digits in regex
+\s for space in regex -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  Product Name:
+  <input type="text" name ="" id="name"><br><br>
+  Price
+  <input type="email" name="" id="price"><br><br>
+  <div class="mb-3">
+    <label for="" class="form-label">Quantity</label>
+    <input
+      type="password"
+      class="form-control"
+      name=""
+      id="Quantity"
+      placeholder=""
+    />
+  </div><br>
+  
+  
+  <button id = "button">Submit</button>
+
+  <script>
+    const btn = document.getElementById("button");
+    btn.addEventListener("click", () => {
+      const name = document.getElementById("name").value.trim();
+      const price = document.getElementById("price").value.trim();
+      const Quantity = document.getElementById("Quantity").value;
+      
+      // Improved regex patterns
+      const nameReg = /^[A-Za-z\s]+$/;
+      // More flexible email regex
+      
+      let isValid = true;
+      
+      // Validate name
+      if (!name || !nameReg.test(name)) {
+        alert("Enter valid name");
+        isValid = false;
+        return;
+      }
+      // Validate price
+      
+  
+      
+      
+      
+      
+      
+      // If all validations pass, save to localStorage
+      if (isValid) {
+        const user = {
+          name: name,
+          email: email,
+          password: password,
+          query: query,
+          timestamp: new Date().toISOString()
+        };
+        
+        const existingdata = JSON.parse(localStorage.getItem("data")) || [];
+        existingdata.push(user);
+        localStorage.setItem("data", JSON.stringify(existingdata));
+        
+        alert("Form submitted successfully!");
+        
+        // Clear the form
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("query").value = "";
+      }
+    });
+  </script>
+</body>
+</html>
